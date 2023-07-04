@@ -5,3 +5,62 @@
 // 5 9 2 3
 // 8 4 2 4
 // 17 -> такого числа в массиве нет
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Задается размер массива m и n
+        int m = 3;
+        int n = 4;
+
+        // Создается двумерный массив
+        double[,] array = new double[m, n];
+
+        // Создается генератор случайных чисел для заполнения массива
+        Random random = new Random();
+
+        for (int i = 0; i < m; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                array[i, j] = random.NextDouble();
+            }
+        }
+
+        // Запрашивается у пользователя позиция элемента
+        Console.Write("Введите номер строки элемента (от 0 до " + (m - 1) + "): ");
+        int row = int.Parse(Console.ReadLine());
+
+        Console.Write("Введите номер столбца элемента (от 0 до " + (n - 1) + "): ");
+        int col = int.Parse(Console.ReadLine());
+
+        // Проверяем, что введенные позиции находятся в допустимых пределах массива
+        if (row >= 0
+        && row < m
+        && col >= 0
+        && col < n)
+        {
+            // Выводим значение элемента
+            double element = array[row, col];
+            Console.WriteLine("Значение элемента [" + row + ", " + col + "]: " + element);
+        }
+        else
+        {
+            // Выводим сообщение о недопустимых позициях
+            Console.WriteLine("Недопустимые позиции элемента. Пожалуйста, введите значения в пределах массива.");
+        }
+              // Вывод массива 
+        Console.WriteLine("Созданный двумерный массив:");
+        for (int i = 0; i < m; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                Console.Write(array[i, j] + " ");
+            }
+            Console.WriteLine();
+        }
+    }
+}
